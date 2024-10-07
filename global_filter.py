@@ -14,12 +14,12 @@ response = requests.get(url)
 with open(local_file, "w", encoding="utf-8") as file:
     file.write(response.text)
 
-# Read the file and filter out the line that contains 'DOMAIN-SUFFIX,pikpak.me'
+# Read the file and filter out lines containing the keyword 'pikpak'
 with open(local_file, "r", encoding="utf-8") as file:
     lines = file.readlines()
 
-# Filter out the line containing the specific rule
-filtered_lines = [line for line in lines if "DOMAIN-SUFFIX,pikpak.me" not in line]
+# Filter out lines that contain the keyword 'pikpak'
+filtered_lines = [line for line in lines if "pikpak" not in line.lower()]
 
 # Write the filtered content back to the file
 with open(local_file, "w", encoding="utf-8") as file:
